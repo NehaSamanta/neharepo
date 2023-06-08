@@ -64,3 +64,15 @@ CREATE PUBLIC BUCKET:(s3 create bucket->ACLs enable->unchecked "Block all public
 
 STATIC WEBSITE ON S3:(s3 create bucket->ACLs enable->unchecked "Block all public access"->check "I acknowledge.."->create bucket->click on bucket ->go to 'properties'->at the bottom option "Static website hosting"->click on 'edit'->click on enable->enter name Index document as "index.html" left others as it is -> click "Save changes"->go to object click "Upload" ->upload more than one.html files click upload->go to bucket->object and click  the check box in left of folder(ex-website).if upload file separately then clich every box.->click "Actions" click "Make public using ACl" then click make public->click on index.html ->copy "Object URL" paste it to another tab.
 
+STATIC WEBSITE IN EC2:(in EC2 Launch instances->allow SSH HTTPS HTTP->copy Public Ipv4->bitvise ubuntu->
+sudo apt-get update
+sudo apt-get upgrade 
+sudo apt-get install ngnix
+cd ..
+cd ..
+pwd output /
+cd var
+cd www
+sudo chmod 777
+->go to New SFTP window ->remote files html option copy all html ml files and paste it to html section(/var/www/html  index.ngnix...)->now copy Ipv4 and paste.
+
