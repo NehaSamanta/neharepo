@@ -1,5 +1,5 @@
 1.RUN PROJECT WITHOUT PORT:( i.lanch instance:select exit security gr,user data 
-
+    copy public IPV4
 ii.in bitvise
 pwd
 cd /
@@ -53,4 +53,10 @@ git clone https://github.com/.../...
 cd ...
 npm install
 node index.js
+
+CREATE MFA:(near sign out Security Credentails ->Assign MFA Device ->Specify a name in device then Next -> scan QR code with Google authenticator.
+
+CREATE IAM user and full access s3:(IAM->users->add users->"I want to ...->custom password(next)->user gr click create group give permisissions s3 create next->goto create user download.csv file click reurn to user list->clck on crteated user ->security credentials->copy console sign_in link past in another tab of crome->after opening the console link user should give relevant details-> user has to change password-> it open IAMuser account.
+
+CREATE PRIVATE BUCKET:(
 
