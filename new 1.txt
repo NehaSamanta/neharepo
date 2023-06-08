@@ -1,12 +1,10 @@
-1.RUN PROJECT WITHOUT PORT:( i.lanch instance:select exit security gr,user data 
-    copy public IPV4
-ii.in bitvise
+1.RUN PROJECT WITHOUT PORT:( i.ec2lanch instance->select exit security gr->user data -> copy public IPV4 -> in bitvise
 pwd
 cd /
 pwd
 cd /etc/ngnix/sites-available/
 /etc/ngnix/sites-avaliable$ sudo nano default
-
+comment previous location 
 location / {
                 proxy_pass http://localhost:4000;
                 proxy_http_version 1.1;
@@ -16,9 +14,10 @@ location / {
                 proxy_cache_bypass $http_upgrade;
         }
 sudo systemctl restart ngnix
+->copy IPV4 past it tab
 
-2. LOAD BALANCE EC2 :(i.lanch Templates: select exit security gr, give user data ii.in EC2 create auto scaling gr.
-
+2. LOAD BALANCE EC2 :(i.EC2 left lanch Templates->give name ->version var1-> check auto scaling guidance->...-> select exit security gr-> give user data ->in EC2 create auto scaling gr->auto saling gr nane->lanche template(privious created)->version Latest(1)->in Network,availability zone click all zones and subnets click next->
+in load balancing click "Attach to new load balance"->load balance scheme click "internet-facing"->in listen HTTP 4000 default routing select autoscaling gr->next->in group size 2 2 3->in scaling policies click "Target tracking scaling policy" instance need 300->next->click Auto Scaling group (it will be created->bitvise ->
 nano infi1.sh
 #!/bin/bash
 
@@ -26,21 +25,16 @@ while true
 do
    echo "Loop forever"
 done
-
 chmod +x infi1.sh
 ./infi1.sh
-
-click on connect:
-same as previous
+->click on connect(another terminal will open)       same as previous
 nano infi2.sh
 chmod +x infi2.sh
 ./infi2.sh
+see cpu utilizer
 
-3.PROJECT FROM GIT TO EC2 BY NEW SECURITY GROUP AND USER DATA
-
-
-for 1,2,3:
 USER DATA
+
 #!/bin/bash
 apt-get update
 apt-get install -y nginx
@@ -75,4 +69,42 @@ cd var
 cd www
 sudo chmod 777
 ->go to New SFTP window ->remote files html option copy all html ml files and paste it to html section(/var/www/html  index.ngnix...)->now copy Ipv4 and paste.
+
+DEPLOY A PROJECT FROM LOCAL MACHINE TO GIT:(Top Repositories->New->create Repository->give name mahe it "PRIVATE" ->repo created ->profile name->settings->Developer Setting->Tokens(classic)->generate new tocken->enter token name set expiration as like ->check all boxs->generate token and copy it ->Click on that folder want to upload in github->Right click Git bash here->
+git init
+git config --global user.email "your mail id"
+git add .
+git commit -m "done"
+git remote add origin "remote repo URl like https://github.com/Neha.."
+git push -f origin master
+->popup window give token->it will upload the file from folder->create folder (repo4)->Git bash here->
+git clone (Sir ar repo)
+ls     optput New-repo1/
+cd New-repo1/
+ls
+
+A PROJECT FROM GITHUB TO EC2:(create Ec2 instance(allow SSH HTTPS HTTP)->copy public Ipv4
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install ngnix 
+curl -sL https://deb.nodesource.com/setup_16.x|sudo -E bash -
+sudo apt install nodejs
+git clone (own repository) //username password :token 
+ls      output -repo2
+cd repo2
+npm install
+->go to instance ->security->click security group->click Edit inbound rules->click add rule ->in Type select coustom TCP ->port range 4000->source Anywhere public IPV4 
+node index.js
+
+DEPLOY A PROJECT FROM GITHUB TO EC2 BY NEW SECURITY GROUP:(EC2->security groups->name same description in inbound rules click add rule custom TCP(4000),SSH,HTTP,HTTPS->created-> instances->give userdata->lanch instance
+
+A WORKMAIL :(amazon workmail->create organization->in organization setting "Free test domail" in alias type name(mckv1234)->click "users" left side click "create user"->user name(neha1234).....->click create user->organization->click "Amazon workmail web application"->give username password->
+
+CREATE ANELASTIC IP FOR AN INSTANCE:(ec2 lanch instance->select exiting security group->select security gr->lanch->in bitvise login-> stop instace ->restart->
+EC2 dashboard->click Elastic IPs->click "Allocate Elastic Ip adderss"->click Allocate->click Allocated IPV4 ->click "Associated Elastic Ip address"->click on instance->select EC2(which one  ypu want to elatic->click on private IP address->click on associate->it will not change
+
+CREATE SERVERLESS COMPUTING SERVICE:(search Lambda->create a function->select "author from search->type func(func1)->runtime choice(Node.js 18.x) ->click create function->
+in fcntl scroll go to code section and edit the index.mjs file save it and deploy->goto configuration ->left side select "function url"->create function url->select NONE click save->copy function URL paste it.
+
+
 
