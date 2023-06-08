@@ -1,3 +1,12 @@
+1.RUN PROJECT WITHOUT PORT:( i.lanch instance:select exit security gr,user data 
+
+ii.in bitvise
+pwd
+cd /
+pwd
+cd /etc/ngnix/sites-available/
+/etc/ngnix/sites-avaliable$ sudo nano default
+
 location / {
                 proxy_pass http://localhost:4000;
                 proxy_http_version 1.1;
@@ -6,9 +15,32 @@ location / {
                 proxy_set_header Host $host;
                 proxy_cache_bypass $http_upgrade;
         }
+sudo systemctl restart ngnix
 
 
+2. LOAD BALANCE EC2 :(i.lanch Templates: select exit security gr, give user data ii.in EC2 create auto scaling gr.
 
+nano infi1.sh
+#!/bin/bash
+
+while true
+do
+   echo "Loop forever"
+done
+
+chmod +x infi1.sh
+./infi1.sh
+
+click on connect:
+same as previous
+nano infi2.sh
+chmod +x infi2.sh
+./infi2.sh
+
+3.PROJECT FROM GIT TO EC2 BY NEW SECURITY GROUP AND USER DATA
+
+
+for 1,2,3:
 #!/bin/bash
 apt-get update
 apt-get install -y nginx
@@ -21,3 +53,4 @@ git clone https://github.com/.../...
 cd ...
 npm install
 node index.js
+
