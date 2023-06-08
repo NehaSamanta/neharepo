@@ -17,7 +17,6 @@ location / {
         }
 sudo systemctl restart ngnix
 
-
 2. LOAD BALANCE EC2 :(i.lanch Templates: select exit security gr, give user data ii.in EC2 create auto scaling gr.
 
 nano infi1.sh
@@ -41,6 +40,7 @@ chmod +x infi2.sh
 
 
 for 1,2,3:
+USER DATA
 #!/bin/bash
 apt-get update
 apt-get install -y nginx
@@ -58,5 +58,9 @@ CREATE MFA:(near sign out Security Credentails ->Assign MFA Device ->Specify a n
 
 CREATE IAM user and full access s3:(IAM->users->add users->"I want to ...->custom password(next)->user gr click create group give permisissions s3 create next->goto create user download.csv file click reurn to user list->clck on crteated user ->security credentials->copy console sign_in link past in another tab of crome->after opening the console link user should give relevant details-> user has to change password-> it open IAMuser account.
 
-CREATE PRIVATE BUCKET:(
+CREATE PRIVATE BUCKET:(s3 create bucket->ACLs is disable check Block all public access create buckey->click on name(new bucket) click upload->copy URLS of the file -> paste it in new tab->click on the file which is uploaded on the bucket (budgets.csv)->click Object Actions -> share with a presigned URL -> set time -> create prisnged URL->copy presigned URL and paste it.
+
+CREATE PUBLIC BUCKET:(s3 create bucket->ACLs enable->unchecked "Block all public access"->check "I acknowledge.."->create bucket->click on bucket "upload"->click file copy"object URL"->click on file go to permission edit ->check "Everyone (public access)"->check"I understand.."->first two option check->save change-> click "object URL"
+
+STATIC WEBSITE ON S3:(s3 create bucket->ACLs enable->unchecked "Block all public access"->check "I acknowledge.."->create bucket->click on bucket ->go to 'properties'->at the bottom option "Static website hosting"->click on 'edit'->click on enable->enter name Index document as "index.html" left others as it is -> click "Save changes"->go to object click "Upload" ->upload more than one.html files click upload->go to bucket->object and click  the check box in left of folder(ex-website).if upload file separately then clich every box.->click "Actions" click "Make public using ACl" then click make public->click on index.html ->copy "Object URL" paste it to another tab.
 
